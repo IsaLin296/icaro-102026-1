@@ -34,13 +34,13 @@ git switch -c ficha/nombre-apellido
 
 ## 4. Completá tu ficha
 
-1. Guardá tu foto o avatar en `images/avatars/` con el patrón `nombre-apellido.ext`. Conservá la extensión real de tu archivo. Puede ser, por ejemplo, `lucia-perez.jpg` o `lucia-perez.png`.
+1. Guardá tu foto o avatar en `images/avatars/` con el patrón `nombre-apellido.ext`. Conservá la extensión real de tu archivo. Puede ser, por ejemplo, `cosme-fulanito.jpg` o `cosme-fulanito.png`.
 2. En `agenda-contactos/index.html`, copiá una ficha completa (`<li class="contacto">`) y agregala al final de la lista, antes de `</ul>`.
 3. En tu ficha, reemplazá el nombre y escribí una o dos frases sobre lo que contaste en la primera clase. Debajo de la síntesis, indicá la ciudad desde donde te conectás, por ejemplo, «Desde Rosario».
 4. Reemplazá el `<span>` de las iniciales por una imagen como la de abajo. Cambiá el nombre y la extensión para que coincidan con tu archivo. Usá `alt=""` porque el nombre ya aparece junto a la imagen.
 
 ```html
-<img class="avatar" src="../images/avatars/lucia-perez.jpg" alt="">
+<img class="avatar" src="../images/avatars/cosme-fulanito.jpg" alt="">
 ```
 
 ## 5. Revisá y guardá tus cambios
@@ -51,7 +51,7 @@ Ejecutá los comandos desde la raíz del repositorio. En la segunda línea, usá
 
 ```bash
 git diff -- agenda-contactos/index.html
-git add agenda-contactos/index.html images/avatars/lucia-perez.jpg
+git add agenda-contactos/index.html images/avatars/cosme-fulanito.jpg
 git diff --cached --name-only
 ```
 
@@ -77,7 +77,7 @@ Probá tu ficha en una ventana ancha y en una angosta. Cuando logres el resultad
 
 ## Perfil modelo
 
-Desde la agenda, hacé clic en el nombre de Julia Ríos para abrir [el perfil modelo](perfil.html). La ficha y la página de detalle se enlazan con rutas relativas, así podés volver a la agenda desde el perfil.
+Desde la agenda, hacé clic en el nombre de Cosme Fulanito para abrir [el perfil modelo](perfil.html). La ficha y la página de detalle se enlazan con rutas relativas, así podés volver a la agenda desde el perfil.
 
 - **Portada.** Guardá la imagen panorámica que elijas en `images/portadas/`. Si adaptás el modelo, actualizá el `src` y describí la imagen en `alt`.
 - **Frase y repositorio.** El elemento `<blockquote>` contiene una frase. El enlace de ejemplo apunta al repositorio del curso. Podés cambiar su `href` por la dirección de tu repositorio.
