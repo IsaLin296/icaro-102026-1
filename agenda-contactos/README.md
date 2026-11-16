@@ -1,53 +1,61 @@
 # Clase 7 · Tu ficha en la agenda
 
-Agregá tu ficha a la agenda del curso. Vas a cambiar de rama, incorporar un archivo nuevo y guardar tus cambios en un commit. Las tres fichas de ejemplo son ficticias.
+Te propongo que agregues tu ficha a la agenda del curso y después armes una página de perfil. Preparé tres fichas ficticias para que tengas un punto de partida. Trabajá a tu ritmo. En cada paso te indico cómo comprobar que salió bien antes de seguir.
 
-## 1. Entrá al repositorio
+## 1. Entrá al repositorio del curso
 
-Si ya clonaste el repositorio del curso, abrí una terminal en esa carpeta. Si todavía no lo tenés, clonalo desde la carpeta donde guardás tus proyectos.
+Te pido que abras una terminal en la carpeta donde guardás tus proyectos. Si todavía no tenés una copia del repositorio, ejecutá estos comandos. El primero descarga el repositorio en una carpeta llamada `sitio-web` y el segundo entra a esa carpeta.
 
 ```bash
 git clone https://github.com/alezvi/icaro-102026-1.git sitio-web
 cd sitio-web
 ```
 
-Ejecutá `git status --short` para ver si tenés cambios pendientes. Si aparecen, revisalos con el docente antes de cambiar de rama.
+Si ya lo clonaste, abrí la terminal directamente en tu carpeta `sitio-web`. Te voy a pedir que ejecutes los demás comandos desde ahí, en la raíz del repositorio.
+
+**Para comprobarlo**, ejecutá `git status --short --branch`. La primera línea empieza con `##` y muestra el nombre de tu rama. Si Git indica que no encontró un repositorio, revisá en qué carpeta abriste la terminal. Si debajo de la rama aparecen archivos, consultame cómo guardar esos cambios antes de continuar.
 
 ## 2. Cambiá a la rama del ejercicio
 
-Cuando el docente publique la rama, ejecutá estos comandos.
+Cuando publique la rama de la clase, te pido que ejecutes estos comandos de a uno. Con el primero, Git actualiza la información que tiene de `origin`, el repositorio remoto que clonaste. Con el segundo, crea tu copia local de la rama y cambia a ella.
 
 ```bash
 git fetch origin
 git switch --track origin/clase-07-agenda-contactos
 ```
 
-Si ya tenías esa rama en tu copia local, usá `git switch clase-07-agenda-contactos`. Abrí `agenda-contactos/index.html` en el navegador para ver la maqueta.
+Si ya tenés esa rama en tu copia local, usá `git switch clase-07-agenda-contactos` en la segunda línea.
+
+**Para comprobarlo**, ejecutá `git branch --show-current`. Espero que veas `clase-07-agenda-contactos`. Después, desde el explorador de archivos, entrá a `agenda-contactos` y abrí `index.html` en el navegador. Deberías ver las tres fichas de ejemplo, entre ellas la de Cosme Fulanito.
 
 ## 3. Creá tu rama de trabajo
 
-Reemplazá `nombre-apellido` por tu nombre y apellido, en minúsculas, con guiones y sin tildes.
+Quiero que guardes tu ficha en una rama propia. En el siguiente comando, reemplazá `nombre-apellido` por los tuyos, con minúsculas, guiones y sin tildes. Si usáramos el nombre de ejemplo, la rama se llamaría `ficha/cosme-fulanito`. La opción `-c` crea la rama y cambia a ella en el mismo paso.
 
 ```bash
 git switch -c ficha/nombre-apellido
 ```
 
+**Para comprobarlo**, ejecutá `git branch --show-current` y revisá que aparezca tu rama con el prefijo `ficha/`. Si ya la habías creado para este ejercicio, entrá con `git switch ficha/nombre-apellido`, usando tu nombre de rama.
+
 ## 4. Completá tu ficha
 
-1. Guardá tu foto o avatar en `images/avatars/` con el patrón `nombre-apellido.ext`. Conservá la extensión real de tu archivo. Puede ser, por ejemplo, `cosme-fulanito.jpg` o `cosme-fulanito.png`.
-2. En `agenda-contactos/index.html`, copiá una ficha completa (`<li class="contacto">`) y agregala al final de la lista, antes de `</ul>`.
-3. En tu ficha, reemplazá el nombre y escribí una o dos frases sobre lo que contaste en la primera clase. Debajo de la síntesis, indicá la ciudad desde donde te conectás, por ejemplo, «Desde Rosario».
-4. Reemplazá el `<span>` de las iniciales por una imagen como la de abajo. Cambiá el nombre y la extensión para que coincidan con tu archivo. Usá `alt=""` porque el nombre ya aparece junto a la imagen.
+Te pido que prepares tu foto o avatar, tu nombre, una síntesis de lo que contaste en la primera clase y la ciudad desde donde te conectás.
+
+1. Copiá tu imagen a `images/avatars/`. Poné tu nombre y apellido en minúsculas, con guiones y sin tildes. Conservá la extensión real del archivo. Por ejemplo, `cosme-fulanito.jpg` para un JPG o `cosme-fulanito.png` para un PNG.
+2. Abrí `agenda-contactos/index.html` en tu editor. Copiá una ficha completa, desde `<li class="contacto">` hasta su `</li>`, y pegala al final de la lista, justo antes de `</ul>`. Hacé los cambios en esa copia.
+3. Dentro del `<h2>` de tu ficha, dejá tu nombre como texto. Si copiaste la ficha de Cosme, reemplazá todo lo que hay entre `<h2>` y `</h2>` por tu nombre. Debajo, escribí una o dos frases sobre tu presentación y actualizá la ciudad, por ejemplo, «Desde Rosario». Más adelante vas a enlazar tu propio perfil.
+4. Reemplazá el `<span>` de las iniciales por una imagen como esta. Cambiá `cosme-fulanito.jpg` por el nombre exacto de tu archivo, incluida la extensión. La ruta empieza con `../` porque el HTML está dentro de `agenda-contactos` y debe subir un nivel para llegar a `images`. En este caso, `alt=""` sirve porque tu nombre ya se lee junto a la imagen.
 
 ```html
 <img class="avatar" src="../images/avatars/cosme-fulanito.jpg" alt="">
 ```
 
-## 5. Revisá y guardá tus cambios
+**Para comprobarlo**, guardá el HTML, recargá la agenda y buscá tu ficha al final de la lista. Debería mostrar tu foto, tu nombre en negrita, la síntesis y la ciudad. Achicá la ventana y fijate si podés leer todo. Si la imagen no carga, compará el nombre y la extensión que pusiste en `src` con el archivo que guardaste en `images/avatars/`.
 
-Recargá la página y comprobá que se vea tu foto, que el nombre esté en negrita y que se lean la síntesis y la ciudad también en una ventana angosta.
+## 5. Guardá el primer commit
 
-Ejecutá los comandos desde la raíz del repositorio. En la segunda línea, usá la ruta de tu propia imagen.
+Primero, quiero que revises qué cambió en la agenda y elijas qué archivos va a guardar Git. Desde `sitio-web`, ejecutá estos comandos. En `git add`, reemplazá el nombre de la imagen de ejemplo por el de tu archivo.
 
 ```bash
 git diff -- agenda-contactos/index.html
@@ -55,7 +63,7 @@ git add agenda-contactos/index.html images/avatars/cosme-fulanito.jpg
 git diff --cached --name-only
 ```
 
-La lista debe mostrar la página y tu imagen. Guardá el commit y revisá que aparezca en el historial de tu rama.
+En la primera salida deberías reconocer el HTML de tu ficha. Si Git abre una vista que termina con `(END)`, presioná `q` para volver a la terminal. En la última salida deberían aparecer dos rutas, la del HTML de la agenda y la de tu avatar. Cuando estén esas dos, te pido que hagas el commit.
 
 ```bash
 git commit -m "Agrega mi ficha a la agenda"
@@ -63,57 +71,84 @@ git log -1 --oneline
 git status --short --branch
 ```
 
+**Para comprobarlo**, buscá el mensaje `Agrega mi ficha a la agenda` en el historial. En el estado, la primera línea debería indicar tu rama `ficha/...` y, si ya guardaste todo lo que editaste en este paso, no habrá archivos debajo.
+
 ## 6. Desafío individual de HTML y CSS
 
-Agregá tres intereses a tu ficha, debajo de la ciudad. Elegí palabras o frases cortas que te representen.
+Ahora te propongo agregar tres intereses debajo de la ciudad. Elegí palabras o frases cortas que te representen y escribí el HTML y el CSS para conseguir este resultado.
 
-### Resultado esperado
+- Cada interés se ve como una etiqueta con fondo suave, bordes redondeados y texto legible.
+- Si hay espacio, las tres etiquetas quedan una al lado de la otra y separadas entre sí.
+- Al angostar la ventana, las etiquetas que ya no entran pasan a la línea siguiente. El avatar y el texto conservan su alineación y la página se puede leer sin desplazarse hacia los costados.
 
-- Cada interés aparece como una etiqueta con fondo suave, bordes redondeados y texto legible.
-- Con espacio suficiente, las tres etiquetas se ven una al lado de la otra, con separación entre ellas.
-- Cuando achicás la ventana, las etiquetas que ya no entran pasan a la línea siguiente. El avatar y el texto siguen alineados y la página se puede leer sin desplazarse hacia los costados.
+**Para comprobarlo**, guardá los archivos y recargá la agenda. Revisá primero con la ventana ancha y después achicala hasta que una etiqueta tenga que bajar. Si se cumple el resultado, guardá la ampliación en un segundo commit. Usá `git status --short` para ver qué archivos editaste, `git add` con esas rutas y `git diff --cached --name-only` para revisarlas antes de guardar. Después de `git commit -m "Agrega mis intereses a la ficha"`, verificá con `git log -2 --oneline` que aparezcan el commit de la ficha y el de los intereses.
 
-Probá tu ficha en una ventana ancha y en una angosta. Cuando logres el resultado esperado, guardá la ampliación en un segundo commit.
+## 7. Creá tu perfil y enlazalo desde la agenda
 
-## Perfil modelo
+### 7.1. Explorá el modelo y hacé una copia
 
-Desde la agenda, hacé clic en el nombre de Cosme Fulanito para abrir [el perfil modelo](perfil.html). La ficha y la página de detalle se enlazan con rutas relativas, así podés volver a la agenda desde el perfil.
+Te invito a hacer clic en el nombre de Cosme Fulanito en la agenda para abrir [el perfil modelo](perfil.html). Probá **Ampliar portada** con un clic y después con el teclado. Usá `Tab` hasta enfocar el botón y presioná `Enter` o la barra espaciadora. En `perfil.js` dejé un ejemplo del evento `click`, que agrega o quita la clase `portada-ampliada` y actualiza el estado del botón. En `perfil.css`, esa clase cambia la altura de la portada y `transition` suaviza el cambio.
 
-- **Portada.** Guardá la imagen panorámica que elijas en `images/portadas/`. Si adaptás el modelo, actualizá el `src` y describí la imagen en `alt`.
-- **Frase y repositorio.** El elemento `<blockquote>` contiene una frase. El enlace de ejemplo apunta al repositorio del curso. Podés cambiar su `href` por la dirección de tu repositorio.
-- **YouTube y Spotify.** Cada `<iframe>` carga un reproductor de un servicio externo. Usá contenido público que se pueda insertar, cambiá el `src` del reproductor y actualizá también el enlace directo y el `title`. [Cómo insertar un video de YouTube](https://support.google.com/youtube/answer/171780?hl=es) · [Cómo insertar contenido de Spotify](https://developer.spotify.com/documentation/embeds/tutorials/creating-an-embed)
-- **Contacto.** Explorá cómo se asocia cada `<label>` con su campo. El correo usa `type="email"` y el mensaje, un `<textarea>`. El botón de envío está deshabilitado.
+En tu rama, duplicá `agenda-contactos/perfil.html` desde el editor y guardá la copia en la misma carpeta como `perfil-nombre-apellido.html`. Usá tus datos en minúsculas, con guiones y sin tildes. Te pido que mantengas las referencias a `estilos.css`, `perfil.css` y `perfil.js`, y los atributos `id` de la portada y del botón. Así podés reutilizar el diseño y la interacción.
 
-### Del evento a la transición
+**Para comprobarlo**, revisá que dentro de `agenda-contactos` aparezcan el archivo `perfil.html` y tu copia. Abrí la copia en el navegador y probá el botón. Al activarlo, la portada debe agrandarse. Al activarlo otra vez, debe recuperar su altura inicial.
 
-Probá **Ampliar portada** con un clic y con el teclado. En `perfil.js`, el evento `click` agrega o quita la clase `portada-ampliada` y actualiza el estado del botón. En `perfil.css`, esa clase cambia la altura de la imagen y `transition` suaviza el cambio.
+### 7.2. Personalizá el contenido
 
-### Cómo probar los reproductores
+Te pido que edites tu copia del perfil con estos cambios.
 
-Los reproductores requieren conexión a Internet. Para probarlos, abrí el perfil desde un servidor local. Si tenés Python instalado, ejecutá este comando desde la raíz del repositorio.
+- **Nombre, presentación y ciudad.** Reemplazá el nombre de Cosme por el tuyo en `<title>`, que aparece en la pestaña, y en `<h1>`, que se ve en la página. Usá la misma presentación y ciudad de tu ficha. Recargá el perfil y compará esos datos con los de la agenda.
+- **Portada.** Guardá una imagen panorámica en `images/portadas/` y cambiá el `src` de la portada para que apunte a tu archivo. Por ejemplo, desde el HTML la ruta sería `../images/portadas/cosme-fulanito.jpg`. Cambiá también el texto de `alt` para que describa tu imagen. Recargá la página y comprobá que se vea la portada que elegiste y que el botón siga ampliándola.
+- **Frase y repositorio.** Escribí tu frase dentro de `<blockquote>` y cambiá el atributo `href` de **Ver repositorio en GitHub** por la URL de tu repositorio. Leé la frase en el navegador y abrí el enlace para confirmar que llega al repositorio correcto.
+- **YouTube y Spotify.** Elegí contenido público que permita insertarse. Copiá la dirección de inserción al `src` de cada `<iframe>`, actualizá su `title` con el nombre del contenido y cambiá el `href` del enlace directo debajo de cada reproductor. Te dejo los pasos de cada plataforma y, en el apartado siguiente, cómo probar los reproductores. [Insertar un video de YouTube](https://support.google.com/youtube/answer/171780?hl=es) · [Insertar contenido de Spotify](https://developer.spotify.com/documentation/embeds/tutorials/creating-an-embed)
+- **Contacto.** Te dejé el formulario como referencia de diseño. Hacé clic en la etiqueta **Correo** para comprobar que el cursor pasa al campo correspondiente. Revisá que también estén **Nombre** y **Mensaje**, y que **Enviar** esté deshabilitado.
 
-```bash
-python -m http.server 8000 --bind 127.0.0.1
-```
+### 7.3. Enlazá la ficha con tu perfil
 
-Entrá a `http://127.0.0.1:8000/agenda-contactos/perfil.html` en el navegador. También podés usar los enlaces directos debajo de los reproductores.
-
-## 7. Creá tu propio perfil y enlazalo desde la agenda
-
-1. En tu rama `ficha/nombre-apellido`, duplicá `agenda-contactos/perfil.html` dentro de la misma carpeta. Guardá la copia como `perfil-nombre-apellido.html`, usando tu nombre y apellido en minúsculas, con guiones y sin tildes.
-2. En tu copia, reemplazá el nombre en `<title>` y `<h1>`. Usá la misma ciudad y presentación que pusiste en tu ficha. Personalizá la frase, el enlace a tu repositorio y los reproductores de YouTube y Spotify siguiendo las indicaciones del perfil modelo.
-3. Guardá tu imagen de portada en `images/portadas/`. Ajustá el `src` del perfil a la ruta relativa de tu archivo, por ejemplo, `../images/portadas/cosme-fulanito.jpg`, y describí tu imagen en `alt`. Conservá las referencias a las hojas de estilo y a `perfil.js` para reutilizar el diseño y la transición.
-4. En `agenda-contactos/index.html`, buscá tu ficha. Dentro del `<h2>`, poné un enlace alrededor de tu nombre. Si ya hay un enlace, editá su `href` para que apunte al archivo que creaste. El ejemplo muestra cómo quedaría para Cosme Fulanito.
+Volvé a `agenda-contactos/index.html` y buscá tu ficha. Te pido que dentro del `<h2>` pongas un enlace alrededor de tu nombre. Si tu ficha ya tiene un enlace, editá el que está ahí. Como los dos HTML están en la misma carpeta, en `href` alcanza con el nombre de tu archivo. Así se vería con el nombre de ejemplo.
 
 ```html
 <h2><a class="enlace-perfil" href="perfil-cosme-fulanito.html">Cosme Fulanito</a></h2>
 ```
 
-5. Abrí la agenda y hacé clic en tu nombre. Comprobá que se abra tu perfil, que cargue la portada y que **Volver a la agenda** te lleve de regreso. Probá **Ampliar portada** y revisá el perfil en una ventana angosta. Si querés comprobar los reproductores, usá el servidor local indicado arriba y abrí la URL de tu propio perfil.
-6. Guardá este trabajo en un nuevo commit. Desde la raíz del repositorio, ejecutá los comandos con el nombre de tu perfil y el nombre y la extensión de tu portada.
+**Para comprobarlo**, recargá la agenda y hacé clic en tu nombre. Deberías llegar al perfil que acabás de editar. Hacé clic en **Volver a la agenda** para verificar el regreso. Achicá la ventana y revisá que la portada y las secciones se adapten al ancho de la pantalla.
+
+### 7.4. Probá los reproductores desde un servidor local
+
+Para esta prueba, te pido que tengas conexión a Internet y que abras la página desde un servidor local. Si tenés Python instalado, ejecutá este comando desde `sitio-web`. Dejá abierta esa terminal durante la prueba.
+
+```bash
+python -m http.server 8000 --bind 127.0.0.1
+```
+
+**Para comprobarlo**, abrí `http://127.0.0.1:8000/agenda-contactos/index.html` en el navegador. Entrá a tu perfil desde tu ficha y desplazate hasta los reproductores. Deberías reconocer el video y el contenido de audio que elegiste. Probá también los enlaces directos y verificá que abran el mismo contenido en cada plataforma. Cuando termines, volvé a la terminal del servidor y presioná `Ctrl+C` para detenerlo.
+
+### 7.5. Guardá el commit del perfil
+
+Por último, te pido que agregues la agenda editada, tu nuevo perfil y la portada. Desde `sitio-web`, ejecutá estos comandos. En la primera línea, sustituí el nombre del HTML y el nombre y la extensión de la imagen por los que usaste.
 
 ```bash
 git add agenda-contactos/index.html agenda-contactos/perfil-cosme-fulanito.html images/portadas/cosme-fulanito.jpg
 git diff --cached --name-only
-git commit -m "Agrega mi perfil y lo enlaza desde la agenda"
 ```
+
+La lista debería mostrar esas tres rutas. Si coinciden con tus archivos, guardá el commit.
+
+```bash
+git commit -m "Agrega mi perfil y lo enlaza desde la agenda"
+git log -1 --oneline
+git status --short --branch
+```
+
+**Para comprobarlo**, confirmá que el último mensaje sea `Agrega mi perfil y lo enlaza desde la agenda` y que Git siga mostrando tu rama `ficha/...`.
+
+## Lo que aprendimos
+
+Al terminar, espero que puedas hacer estas tareas en otros proyectos.
+
+- Traer una rama de un repositorio remoto, cambiar a ella con `git switch` y crear tu propia rama de trabajo.
+- Revisar cambios con `git diff`, elegir qué guardar con `git add` y comprobar tus commits con `git log`.
+- Incorporar imágenes y vincular páginas HTML con rutas relativas.
+- Adaptar una ficha con HTML y CSS y comprobar que se lea bien con distintos anchos de pantalla.
+- Reconocer cómo un evento de JavaScript cambia una clase y cómo CSS usa ese cambio para animar una transición.
+- Insertar contenido con `<iframe>` e identificar cómo se relacionan las etiquetas y los campos de un formulario.
