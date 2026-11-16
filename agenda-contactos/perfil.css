@@ -33,16 +33,23 @@
     margin-bottom: 24px;
 }
 
+.control-portada {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip-path: inset(50%);
+}
+
 .portada-perfil {
     display: block;
     width: 100%;
     height: clamp(150px, 29vw, 264px);
     object-fit: cover;
-    /* Esta transición reacciona al cambio de altura que activa el clic. */
+    /* La transición suaviza el cambio de altura cuando se marca la casilla. */
     transition: height 360ms ease;
 }
 
-.portada-ampliada {
+.control-portada:checked + .portada-perfil {
     height: clamp(230px, 48vw, 416px);
 }
 
@@ -71,7 +78,7 @@
     color: #566174;
 }
 
-.boton-portada,
+.etiqueta-portada,
 .boton-envio {
     padding: 8px 15px;
     border: 1px solid #929eb3;
@@ -80,18 +87,22 @@
     font-weight: 600;
 }
 
-.boton-portada {
+.etiqueta-portada {
     background-color: #f8f9fc;
     color: #263453;
     cursor: pointer;
     transition: background-color 180ms ease, border-color 180ms ease;
 }
 
-.boton-portada:hover,
-.boton-portada:focus-visible,
-.boton-portada[aria-pressed="true"] {
+.etiqueta-portada:hover,
+.control-portada:checked ~ .presentacion-perfil .etiqueta-portada {
     background-color: #ede5fb;
     border-color: #947cc3;
+}
+
+.control-portada:focus-visible ~ .presentacion-perfil .etiqueta-portada {
+    outline: 2px solid var(--acento-perfil);
+    outline-offset: 3px;
 }
 
 .grupo-perfil {
@@ -218,7 +229,7 @@
 
 @media (prefers-reduced-motion: reduce) {
     .portada-perfil,
-    .boton-portada {
+    .etiqueta-portada {
         transition: none;
     }
 }

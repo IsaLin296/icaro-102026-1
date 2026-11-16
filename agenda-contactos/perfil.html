@@ -6,13 +6,13 @@
     <title>Cosme Fulanito · Perfil</title>
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="perfil.css">
-    <script src="perfil.js" defer></script>
 </head>
 <body>
     <main class="perfil">
         <a class="volver-agenda" href="index.html">Volver a la agenda</a>
 
         <header class="cabecera-perfil">
+            <input class="control-portada" id="ampliar-portada" type="checkbox" aria-controls="portada-perfil">
             <img class="portada-perfil" id="portada-perfil"
                 src="../images/portadas/lago-al-atardecer.png"
                 alt="Montañas y cielo rosado reflejados en un lago al atardecer">
@@ -22,8 +22,7 @@
                     <p class="ubicacion-perfil">Desde Rosario</p>
                     <p>Le gusta la fotografía y quiere aprender a crear su propio sitio.</p>
                 </div>
-                <button class="boton-portada" id="boton-portada" type="button"
-                    aria-controls="portada-perfil" aria-pressed="false" hidden>Ampliar portada</button>
+                <label class="etiqueta-portada" for="ampliar-portada">Ampliar portada</label>
             </div>
         </header>
 

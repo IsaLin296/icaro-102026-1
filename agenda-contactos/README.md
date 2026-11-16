@@ -26,7 +26,13 @@ git switch --track origin/clase-07-agenda-contactos
 
 Si ya tenés esa rama en tu copia local, usá `git switch clase-07-agenda-contactos` en la segunda línea.
 
-**Para comprobarlo**, ejecutá `git branch --show-current`. Espero que veas `clase-07-agenda-contactos`. Después, desde el explorador de archivos, entrá a `agenda-contactos` y abrí `index.html` en el navegador. Deberías ver las tres fichas de ejemplo, entre ellas la de Cosme Fulanito.
+**Para comprobarlo**, ejecutá `git branch --show-current`. Espero que veas `clase-07-agenda-contactos`.
+
+### Abrí la agenda con Live Server
+
+Te pido que abras la carpeta `sitio-web` en VS Code desde **Archivo → Abrir carpeta**. Si todavía no tenés Live Server, abrí la vista **Extensiones**, buscá **Live Server** de Ritwick Dey e instalala. En el explorador de VS Code, buscá `agenda-contactos/index.html`, hacé clic derecho sobre el archivo y elegí **Open with Live Server**. [Extensión Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
+
+**Para comprobarlo**, fijate que el navegador muestre una dirección que empiece con `http://` y termine con `/agenda-contactos/index.html`. Deberías ver las tres fichas de ejemplo, entre ellas la de Cosme Fulanito. Dejá Live Server abierto mientras trabajás.
 
 ## 3. Creá tu rama de trabajo
 
@@ -87,18 +93,18 @@ Ahora te propongo agregar tres intereses debajo de la ciudad. Elegí palabras o 
 
 ### 7.1. Explorá el modelo y hacé una copia
 
-Te invito a hacer clic en el nombre de Cosme Fulanito en la agenda para abrir [el perfil modelo](perfil.html). Probá **Ampliar portada** con un clic y después con el teclado. Usá `Tab` hasta enfocar el botón y presioná `Enter` o la barra espaciadora. En `perfil.js` dejé un ejemplo del evento `click`, que agrega o quita la clase `portada-ampliada` y actualiza el estado del botón. En `perfil.css`, esa clase cambia la altura de la portada y `transition` suaviza el cambio.
+Te invito a hacer clic en el nombre de Cosme Fulanito en la agenda para abrir [el perfil modelo](perfil.html). Probá **Ampliar portada** con un clic y después con el teclado. Usá `Tab` hasta que el control quede resaltado y presioná la barra espaciadora. En el HTML dejé una casilla vinculada a la etiqueta **Ampliar portada**. En `perfil.css`, el selector `:checked` aplica una altura mayor cuando la casilla está marcada y `transition` suaviza el cambio.
 
-En tu rama, duplicá `agenda-contactos/perfil.html` desde el editor y guardá la copia en la misma carpeta como `perfil-nombre-apellido.html`. Usá tus datos en minúsculas, con guiones y sin tildes. Te pido que mantengas las referencias a `estilos.css`, `perfil.css` y `perfil.js`, y los atributos `id` de la portada y del botón. Así podés reutilizar el diseño y la interacción.
+En tu rama, duplicá `agenda-contactos/perfil.html` desde el editor y guardá la copia en la misma carpeta como `perfil-nombre-apellido.html`. Usá tus datos en minúsculas, con guiones y sin tildes. Te pido que mantengas las referencias a `estilos.css` y `perfil.css`, y los atributos `id` de la casilla y `for` de su etiqueta. Así podés reutilizar el diseño y la interacción.
 
-**Para comprobarlo**, revisá que dentro de `agenda-contactos` aparezcan el archivo `perfil.html` y tu copia. Abrí la copia en el navegador y probá el botón. Al activarlo, la portada debe agrandarse. Al activarlo otra vez, debe recuperar su altura inicial.
+**Para comprobarlo**, revisá que dentro de `agenda-contactos` aparezcan el archivo `perfil.html` y tu copia. En la dirección del perfil modelo que abrió Live Server, reemplazá `perfil.html` por el nombre de tu archivo. Hacé clic en **Ampliar portada**. La imagen debe agrandarse y, con un segundo clic, recuperar su altura inicial.
 
 ### 7.2. Personalizá el contenido
 
 Te pido que edites tu copia del perfil con estos cambios.
 
 - **Nombre, presentación y ciudad.** Reemplazá el nombre de Cosme por el tuyo en `<title>`, que aparece en la pestaña, y en `<h1>`, que se ve en la página. Usá la misma presentación y ciudad de tu ficha. Recargá el perfil y compará esos datos con los de la agenda.
-- **Portada.** Guardá una imagen panorámica en `images/portadas/` y cambiá el `src` de la portada para que apunte a tu archivo. Por ejemplo, desde el HTML la ruta sería `../images/portadas/cosme-fulanito.jpg`. Cambiá también el texto de `alt` para que describa tu imagen. Recargá la página y comprobá que se vea la portada que elegiste y que el botón siga ampliándola.
+- **Portada.** Guardá una imagen panorámica en `images/portadas/` y cambiá el `src` de la portada para que apunte a tu archivo. Por ejemplo, desde el HTML la ruta sería `../images/portadas/cosme-fulanito.jpg`. Cambiá también el texto de `alt` para que describa tu imagen. Recargá la página y comprobá que se vea la portada que elegiste y que el control siga ampliándola.
 - **Frase y repositorio.** Escribí tu frase dentro de `<blockquote>` y cambiá el atributo `href` de **Ver repositorio en GitHub** por la URL de tu repositorio. Leé la frase en el navegador y abrí el enlace para confirmar que llega al repositorio correcto.
 - **YouTube y Spotify.** Elegí contenido público que permita insertarse. Copiá la dirección de inserción al `src` de cada `<iframe>`, actualizá su `title` con el nombre del contenido y cambiá el `href` del enlace directo debajo de cada reproductor. Te dejo los pasos de cada plataforma y, en el apartado siguiente, cómo probar los reproductores. [Insertar un video de YouTube](https://support.google.com/youtube/answer/171780?hl=es) · [Insertar contenido de Spotify](https://developer.spotify.com/documentation/embeds/tutorials/creating-an-embed)
 - **Contacto.** Te dejé el formulario como referencia de diseño. Hacé clic en la etiqueta **Correo** para comprobar que el cursor pasa al campo correspondiente. Revisá que también estén **Nombre** y **Mensaje**, y que **Enviar** esté deshabilitado.
@@ -113,15 +119,11 @@ Volvé a `agenda-contactos/index.html` y buscá tu ficha. Te pido que dentro del
 
 **Para comprobarlo**, recargá la agenda y hacé clic en tu nombre. Deberías llegar al perfil que acabás de editar. Hacé clic en **Volver a la agenda** para verificar el regreso. Achicá la ventana y revisá que la portada y las secciones se adapten al ancho de la pantalla.
 
-### 7.4. Probá los reproductores desde un servidor local
+### 7.4. Probá los reproductores con Live Server
 
-Para esta prueba, te pido que tengas conexión a Internet y que abras la página desde un servidor local. Si tenés Python instalado, ejecutá este comando desde `sitio-web`. Dejá abierta esa terminal durante la prueba.
+Te pido que uses la misma pestaña de la agenda que abrió Live Server. Entrá a tu perfil desde tu ficha y desplazate hasta los reproductores. Para esta prueba también vas a necesitar conexión a Internet.
 
-```bash
-python -m http.server 8000 --bind 127.0.0.1
-```
-
-**Para comprobarlo**, abrí `http://127.0.0.1:8000/agenda-contactos/index.html` en el navegador. Entrá a tu perfil desde tu ficha y desplazate hasta los reproductores. Deberías reconocer el video y el contenido de audio que elegiste. Probá también los enlaces directos y verificá que abran el mismo contenido en cada plataforma. Cuando termines, volvé a la terminal del servidor y presioná `Ctrl+C` para detenerlo.
+**Para comprobarlo**, revisá que la dirección de tu perfil empiece con `http://` y que puedas reconocer el video y el contenido de audio que elegiste. Probá también los enlaces directos y verificá que abran el mismo contenido en cada plataforma.
 
 ### 7.5. Guardá el commit del perfil
 
@@ -150,5 +152,6 @@ Al terminar, espero que puedas hacer estas tareas en otros proyectos.
 - Revisar cambios con `git diff`, elegir qué guardar con `git add` y comprobar tus commits con `git log`.
 - Incorporar imágenes y vincular páginas HTML con rutas relativas.
 - Adaptar una ficha con HTML y CSS y comprobar que se lea bien con distintos anchos de pantalla.
-- Reconocer cómo un evento de JavaScript cambia una clase y cómo CSS usa ese cambio para animar una transición.
+- Abrir las páginas por HTTP con Live Server desde VS Code.
+- Usar el estado `:checked` de una casilla HTML para cambiar la altura de la portada con una transición CSS.
 - Insertar contenido con `<iframe>` e identificar cómo se relacionan las etiquetas y los campos de un formulario.
