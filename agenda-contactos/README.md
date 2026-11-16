@@ -97,3 +97,23 @@ python -m http.server 8000 --bind 127.0.0.1
 ```
 
 Entrá a `http://127.0.0.1:8000/agenda-contactos/perfil.html` en el navegador. También podés usar los enlaces directos debajo de los reproductores.
+
+## 7. Creá tu propio perfil y enlazalo desde la agenda
+
+1. En tu rama `ficha/nombre-apellido`, duplicá `agenda-contactos/perfil.html` dentro de la misma carpeta. Guardá la copia como `perfil-nombre-apellido.html`, usando tu nombre y apellido en minúsculas, con guiones y sin tildes.
+2. En tu copia, reemplazá el nombre en `<title>` y `<h1>`. Usá la misma ciudad y presentación que pusiste en tu ficha. Personalizá la frase, el enlace a tu repositorio y los reproductores de YouTube y Spotify siguiendo las indicaciones del perfil modelo.
+3. Guardá tu imagen de portada en `images/portadas/`. Ajustá el `src` del perfil a la ruta relativa de tu archivo, por ejemplo, `../images/portadas/cosme-fulanito.jpg`, y describí tu imagen en `alt`. Conservá las referencias a las hojas de estilo y a `perfil.js` para reutilizar el diseño y la transición.
+4. En `agenda-contactos/index.html`, buscá tu ficha. Dentro del `<h2>`, poné un enlace alrededor de tu nombre. Si ya hay un enlace, editá su `href` para que apunte al archivo que creaste. El ejemplo muestra cómo quedaría para Cosme Fulanito.
+
+```html
+<h2><a class="enlace-perfil" href="perfil-cosme-fulanito.html">Cosme Fulanito</a></h2>
+```
+
+5. Abrí la agenda y hacé clic en tu nombre. Comprobá que se abra tu perfil, que cargue la portada y que **Volver a la agenda** te lleve de regreso. Probá **Ampliar portada** y revisá el perfil en una ventana angosta. Si querés comprobar los reproductores, usá el servidor local indicado arriba y abrí la URL de tu propio perfil.
+6. Guardá este trabajo en un nuevo commit. Desde la raíz del repositorio, ejecutá los comandos con el nombre de tu perfil y el nombre y la extensión de tu portada.
+
+```bash
+git add agenda-contactos/index.html agenda-contactos/perfil-cosme-fulanito.html images/portadas/cosme-fulanito.jpg
+git diff --cached --name-only
+git commit -m "Agrega mi perfil y lo enlaza desde la agenda"
+```
