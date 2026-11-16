@@ -74,3 +74,26 @@ Agregá tres intereses a tu ficha, debajo de la ciudad. Elegí palabras o frases
 - Cuando achicás la ventana, las etiquetas que ya no entran pasan a la línea siguiente. El avatar y el texto siguen alineados y la página se puede leer sin desplazarse hacia los costados.
 
 Probá tu ficha en una ventana ancha y en una angosta. Cuando logres el resultado esperado, guardá la ampliación en un segundo commit.
+
+## Perfil modelo
+
+Desde la agenda, hacé clic en el nombre de Julia Ríos para abrir [el perfil modelo](perfil.html). La ficha y la página de detalle se enlazan con rutas relativas, así podés volver a la agenda desde el perfil.
+
+- **Portada.** Guardá la imagen panorámica que elijas en `images/portadas/`. Si adaptás el modelo, actualizá el `src` y describí la imagen en `alt`.
+- **Frase y repositorio.** El elemento `<blockquote>` contiene una frase. El enlace de ejemplo apunta al repositorio del curso. Podés cambiar su `href` por la dirección de tu repositorio.
+- **YouTube y Spotify.** Cada `<iframe>` carga un reproductor de un servicio externo. Usá contenido público que se pueda insertar, cambiá el `src` del reproductor y actualizá también el enlace directo y el `title`. [Cómo insertar un video de YouTube](https://support.google.com/youtube/answer/171780?hl=es) · [Cómo insertar contenido de Spotify](https://developer.spotify.com/documentation/embeds/tutorials/creating-an-embed)
+- **Contacto.** Explorá cómo se asocia cada `<label>` con su campo. El correo usa `type="email"` y el mensaje, un `<textarea>`. El botón de envío está deshabilitado.
+
+### Del evento a la transición
+
+Probá **Ampliar portada** con un clic y con el teclado. En `perfil.js`, el evento `click` agrega o quita la clase `portada-ampliada` y actualiza el estado del botón. En `perfil.css`, esa clase cambia la altura de la imagen y `transition` suaviza el cambio.
+
+### Cómo probar los reproductores
+
+Los reproductores requieren conexión a Internet. Para probarlos, abrí el perfil desde un servidor local. Si tenés Python instalado, ejecutá este comando desde la raíz del repositorio.
+
+```bash
+python -m http.server 8000 --bind 127.0.0.1
+```
+
+Entrá a `http://127.0.0.1:8000/agenda-contactos/perfil.html` en el navegador. También podés usar los enlaces directos debajo de los reproductores.

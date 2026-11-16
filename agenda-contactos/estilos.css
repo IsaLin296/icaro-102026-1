@@ -100,6 +100,18 @@ body {
     font-size: 13px;
 }
 
+.enlace-perfil {
+    color: inherit;
+    text-decoration-color: #947cc3;
+    text-underline-offset: 3px;
+    transition: color 180ms ease;
+}
+
+.enlace-perfil:hover,
+.enlace-perfil:focus-visible {
+    color: #5c329f;
+}
+
 @media (max-width: 520px) {
     .agenda {
         padding: 36px 16px;
